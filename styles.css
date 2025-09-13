@@ -1,0 +1,39 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+html {
+  font-family: Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#calculator .section{ 
+  border: 1px solid black;
+  width: 350px;
+  display: flex;
+  padding: .5rem;
+  gap: .5rem;
+  .screen-display {
+    flex: 3.2;
+    border: 1px solid black;
+    height: 60px;
+  }
+  
+  button {
+    flex: 1;
+    height: 60px;
+  }
+}
