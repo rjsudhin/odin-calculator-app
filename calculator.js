@@ -1,63 +1,66 @@
-const allNumbers = document.querySelectorAll('.number')
-const allOperators = document.querySelectorAll('.operator')
-const equal = document.querySelector('.equal')
 const screenDisplay = document.querySelector('.screen-display')
-const currentValueDisplay = document.querySelector('.current-value-display')
-const previousValueDisplay = document.querySelector('.previous-value-display')
-const backspace = document.querySelector('.backspace')
+const currentDisplay = document.querySelector('.current-display')
+const previousDisplay = document.querySelector('.previous-display')
+
+const clear = document.querySelector('.clear-btn')
+const allNumber = document.querySelectorAll('.number')
+const allOperator = document.querySelectorAll('.operator')
+const equal = document.querySelector('.equal')
+const decimal = document.querySelector('.decimal')
 
 let currentValue = ''
 let previousValue = ''
-let op = ''
+let operator = ''
+
+// clear button clicks
+clear.addEventListener('click', () => {
+  previousValue = ''
+  currentValue = ''
+  operator = ''
+  previousDisplay.textContent = previousValue
+  currentDisplay.textContent = currentValue
+})
 
 
 // numbers clicks
-allNumbers.forEach((number) => {
+allNumber.forEach((number) => {
   number.addEventListener('click', (e) => {
-    console.log(e.target.textContent)
-    let currentNumTarget = e.target.textContent
-    handlingNumber(currentNumTarget)
-    currentValueDisplay.textContent = currentValue
+    handlingNumber(e.target.textContent)
+    currentDisplay.textContent = currentValue
   })
 })
 
-// operator clicks
-allOperators.forEach((operator) => {
-  operator.addEventListener('click', (e) => {
-    console.log(e.target.textContent)
-    let currentOperatorTarget = e.target.textContent
-    handlingOperator(currentOperatorTarget)
-    previousValueDisplay.textContent = previousValue + ' ' + op
-    currentValueDisplay.textContent = ''
+// operators clicks
+allOperator.forEach((op) => {
+  op.addEventListener('click', (e) => {
+    handlingOperator(e.target.textContent)
+    previousDisplay.textContent = previousValue + ' ' + operator
+    currentDisplay.textContent = currentValue
   })
 })
 
-// equal button clicks
-equal.addEventListener('click', () => {
-  operate()
-  previousValueDisplay.textContent += ' ' + currentValue
-  currentValueDisplay.textContent = previousValue
-  currentValue = previousValue
-  previousValue = ''
-})
-
-
-backspace.addEventListener('click', () => {
-  if (screenDisplay.textContent != '') {
-    let fullText = screenDisplay.textContent
-    console.log(fullText.length)
+// deciaml button clicks
+decimal.addEventListener('click', (e) => {
+  if (!currentValue.includes('.')) {
+    currentValue += '.'
   }
 })
 
+// equal button click 
+equal.addEventListener('click', () => {
+  operate()
+  previousDisplay.textContent += ' ' + currentValue
+  currentDisplay.textContent = previousValue
+})
 
 function operate() {
-  // getting Operation
-  // strings to convert to numbers
-  previousValue = parseInt(previousValue)
-  currentValue = parseInt(currentValue)
+  // conevert to numbers
+  previousValue = parseFloat(previousValue)
+  currentValue = parseFloat(currentValue)
 
-  switch (op) {
-    case '/':
+  // getting the operations
+  switch (operator) {
+    case '/': 
       previousValue /= currentValue
       break
 
@@ -65,26 +68,35 @@ function operate() {
       previousValue *= currentValue
       break
 
+    case '-': 
+      previousValue -= currentValue
+      break
+
     case '+':
       previousValue += currentValue
       break
-
-    case '-':
-      previousValue -= currentValue
-      break
   }
 
+  previousValue = roundMaximum(previousValue)
+  
+  // convert to strings
+  previousValue = previousValue.toString()
+  currentValue = currentValue.toString()
+
   console.log(previousValue)
+
 }
 
+function roundMaximum(num) {
+  return Math.round(num * 1000) / 1000
+}
 
 function handlingNumber(num) {
   currentValue += num
 }
 
-
-function handlingOperator(operator) {
-  op = operator
+function handlingOperator(op) {
+  operator = op
   previousValue = currentValue
   currentValue = ''
 }
