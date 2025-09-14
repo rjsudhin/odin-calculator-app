@@ -4,6 +4,16 @@
   padding: 0;
 }
 
+:root {
+  --full-bg: #626880;
+  --app-bg: #292c3c;
+  --clear-btn: #e78284;
+  --screen-color: #a6e3a1;
+  --button: #ca9ee6;
+  --btn-hover: #51576d;
+  --previous-out: #313244;
+  --current-out: #1e1e1e;
+}
 
 html {
   font-family: Helvetica, sans-serif;
@@ -17,23 +27,68 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--full-bg);
+}
+
+#calculator {
+  background-color: var(--app-bg);
+  padding: 2rem 1rem;
+  border-radius: .5rem;
+  box-shadow: 10px 10px 5px 2px #2525259d;
+}
+
+#calculator .screen-display {
+  background-color: var(--screen-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 0 .5rem;
+  font-weight: bold;
+
+  .previous-display {
+    color: var(--previous-out);
+    font-size: 1.1rem;
+    opacity: 0.5;
+  }
+
+  .current-display {
+    color: var(--current-out);
+    font-size: 1.4rem;
+  }
 }
 
 
 #calculator .section{ 
-  border: 1px solid black;
   width: 350px;
   display: flex;
-  padding: .5rem;
-  gap: .5rem;
+  padding: .8rem;
+  gap: .8rem;
   .screen-display {
     flex: 3.2;
-    border: 1px solid black;
     height: 60px;
   }
   
   button {
     flex: 1;
     height: 60px;
+    border: none;
+    background-color: var(--button);
+    font-weight: bold;
+    font-size: 1rem;
+    color: #c6d0f5;
+    cursor: pointer;
+  }
+
+  button:active {
+    border-radius: .5rem;
+  }
+
+  button:hover {
+    background-color: var(--btn-hover);
+  }
+
+  .clear-btn {
+    background-color: var(--clear-btn);
   }
 }
