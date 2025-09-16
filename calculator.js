@@ -48,9 +48,13 @@ decimal.addEventListener('click', (e) => {
 
 // equal button click 
 equal.addEventListener('click', () => {
-  operate()
-  previousDisplay.textContent += ' ' + currentValue
-  currentDisplay.textContent = previousValue
+  if (currentValue != '' && previousValue != '') {
+    operate()
+    previousDisplay.textContent += ' ' + currentValue
+    currentDisplay.textContent = previousValue
+    currentValue = previousValue
+    previousValue = ''
+  }
 })
 
 function operate() {
