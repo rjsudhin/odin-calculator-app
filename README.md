@@ -21,6 +21,11 @@ This project helped me practice **JavaScript fundamentals, DOM manipulation, and
 
 ---
 
+## 🚀 Live Demo
+👉 [Click here to use the Calculator](https://rjsudhin.github.io/odin-calculator-app/)
+
+---
+
 ## 📸 Screenshot
 ![Calculator Screenshot](./images/calculator-app-screenshot.png)
 
