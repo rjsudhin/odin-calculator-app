@@ -91,7 +91,6 @@ function operate() {
   currentValue = currentValue.toString()
 
   console.log(previousValue)
-
 }
 
 function roundMaximum(num) {
