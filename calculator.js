@@ -50,6 +50,9 @@ decimal.addEventListener('click', (e) => {
 equal.addEventListener('click', () => {
   if (currentValue != '' && previousValue != '') {
     operate()
+    if (previousValue.length >= 10) {
+      previousValue = checkingOverFlow(previousValue)
+    }
     previousDisplay.textContent += ' ' + currentValue
     currentDisplay.textContent = previousValue
     currentValue = previousValue
@@ -96,11 +99,18 @@ function roundMaximum(num) {
 }
 
 function handlingNumber(num) {
-  currentValue += num
+  if (currentValue.length < 10) {
+    currentValue += num
+  }
 }
 
 function handlingOperator(op) {
   operator = op
   previousValue = currentValue
   currentValue = ''
+}
+
+
+function checkingOverFlow(current) {
+  return current = current.slice(0, 9) + '...'
 }
