@@ -39,4 +39,25 @@ odin-calculator-app/
 ```
 ---
 
+## 🎯 What I Learned
+- How to **separate logic and UI updates** in JavaScript  
+- Using **event listeners** for interactive buttons  
+- Handling **edge cases** like number length and display overflow  
+- Keeping the UI **minimal, clear, and user-friendly**
+
+---
+
+## 🚧 Future Improvements
+- Implement **keyboard input support**  
+- Add **hover/press animations** for better UX  
+
+---
+
+## 💡 Personal Note
+This project reflects my **minimalist mindset** as a developer — I like things that are clean, functional, and easy to use.  
+It also shows how I build step by step: start with functionality, refine with design, and then polish the details.  
+
+---
+
+
 
